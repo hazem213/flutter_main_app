@@ -32,7 +32,7 @@ class _MapScreenState extends State<MapScreen> {
   double get _speed => _points.isEmpty ? 0 : _points.last.speed * 3.6;
   ActivityType get _activity => _isTracking
       ? RouteService.detectActivity(_points)
-      : ActivityType.stationary;
+      : ActivityType.standing;
 
   Future<void> _toggle() async {
     _isTracking ? await _stop() : await _start();
@@ -43,7 +43,7 @@ class _MapScreenState extends State<MapScreen> {
     if (!ok) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('محتاجين إذن الموقع')),
+        const SnackBar(content: Text('Waiting for permission')),
       );
       return;
     }
@@ -68,7 +68,7 @@ class _MapScreenState extends State<MapScreen> {
   Future<void> _stop() async {
     _locationSub?.cancel();
     _timer?.cancel();
-    setState(() => _isTracking = false);  // ✅ بس كده، مفيش حفظ
+    setState(() => _isTracking = false);
   }
 
   @override
@@ -98,8 +98,7 @@ class _MapScreenState extends State<MapScreen> {
           ControlPanelWidget(
             isTracking: _isTracking,
             distanceKm: _distance,
-            duration: _elapsed,
-            speedKmh: _speed,
+
             activityType: _activity,
             onStartStop: _toggle,
           ),

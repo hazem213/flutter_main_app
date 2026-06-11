@@ -6,7 +6,7 @@ class LocationService {
     return Geolocator.getPositionStream(
       locationSettings: const LocationSettings(
         accuracy: LocationAccuracy.high,
-        distanceFilter: 5,
+        distanceFilter:2 ,
       ),
     ).map((position) => LocationPoint(
       latitude: position.latitude,

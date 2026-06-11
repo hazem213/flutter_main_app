@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'location_point.dart';
 
-enum ActivityType { stationary , walk, jog, run }
+enum ActivityType { standing , walking, jogging, running }
 
 class RouteModel {
   final int? id;

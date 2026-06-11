@@ -4,8 +4,7 @@ import '../models/route_model.dart';
 class ControlPanelWidget extends StatelessWidget {
   final bool isTracking;
   final double distanceKm;       // محتفظ بيه علشان الـ parent
-  final Duration duration;       // محتفظ بيه علشان الـ parent
-  final double speedKmh;         // محتفظ بيه علشان الـ parent
+  // محتفظ بيه علشان الـ parent
   final ActivityType activityType;
   final VoidCallback onStartStop;
 
@@ -13,18 +12,16 @@ class ControlPanelWidget extends StatelessWidget {
     super.key,
     required this.isTracking,
     required this.distanceKm,
-    required this.duration,
-    required this.speedKmh,
     required this.activityType,
     required this.onStartStop,
   });
 
   String get _activityLabel {
     switch (activityType) {
-      case ActivityType.stationary: return '🧍 واقف';  // ✅ ضيف
-      case ActivityType.run:  return '🏃 جري';
-      case ActivityType.jog:  return '🏃 هرولة';
-      case ActivityType.walk: return '🚶 مشي';
+      case ActivityType.standing: return 'Standing';  // ✅ ضيف
+      case ActivityType.running:  return 'Running';
+      case ActivityType.jogging:  return 'Jogging';
+      case ActivityType.walking: return 'Walking';
     }
   }
 
